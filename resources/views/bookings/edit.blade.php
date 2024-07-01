@@ -12,9 +12,9 @@
             <div class="input-group mt-2">
                 <span class="input-group-text fw-bold bg-light">ID Hotel</span>
                 <select class="form-select" name='hotel_id'>
-                    <option value="{{$booking->hotel_id}}">{{$booking->hotel_id}}</option>
+                    <option value="{{$booking->hotel_id}}">{{$booking->getHotelName()}}</option>
                     @foreach($hotels as $item)
-                        <option value="{{$item->hotel_id}}">{{$item->hotel_id}}</option>
+                        <option value="{{$item->hotel_id}}">{{$item->hotel_name}}</option>
                     @endforeach
                 </select>
             </div>

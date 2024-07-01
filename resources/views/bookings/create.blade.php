@@ -7,10 +7,10 @@
             @csrf
 
             <div class="input-group mt-2">
-                <span class="input-group-text fw-bold bg-light">ID Hotel</span>
+                <span class="input-group-text fw-bold bg-light">Hotel Name</span>
                 <select class="form-select" name='hotel_id'>
                     @foreach($hotels as $item)
-                        <option value="{{$item->hotel_id}}">{{$item->hotel_id}}</option>
+                        <option value="{{$item->hotel_id}}">{{$item->hotel_name}}</option>
                     @endforeach
                 </select>
             </div>

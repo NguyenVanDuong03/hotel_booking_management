@@ -17,10 +17,10 @@
                 <thead class="table-primary text-center">
                     <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Hotel Name</th>
                     <th scope="col">Guest Name</th>
                     <th scope="col">Checkin</th>
                     <th scope="col">Checkout</th>
-                    <th scope="col">Number Of Hour</th>
                     <th scope="col">Total Money</th>
 
                     <th scope="col" class="text-center" colspan="3">Option</th>
@@ -31,10 +31,10 @@
                         @foreach($bookings as $item)
                             <tr>
                                 <th scope="row">{{$item->booking_id}}</th>
+                                <td>{{$item->getHotelName()}}</td>
                                 <td>{{$item->booking_guest}}</td>
                                 <td>{{$item->booking_checkin}}</td>
                                 <td>{{$item->booking_checkout}}</td>
-                                <td>{{$item->booking_number_of_hour}}</td>
                                 <td>{{$item->booking_total_price}}</td>
 
                                 <td ><a class="btn btn-success" href="{{route('bookings.show', ['booking' => $item->booking_id, 'pageIndex' => $pageIndex])}}"><i class="fa-regular fa-eye"></i></a></td>

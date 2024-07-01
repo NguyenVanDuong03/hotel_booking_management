@@ -16,7 +16,7 @@ class BookingController extends Controller
     public function index(request $request)
     {
         $numberOfRecord = Booking::count();
-        $perPage = 20;
+        $perPage = 10;
         $numberOfPage = $numberOfRecord % $perPage == 0?
              (int) $numberOfRecord / $perPage: (int) $numberOfRecord / $perPage + 1;
         $pageIndex = 1;
