@@ -2,10 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <title>My Booking</title> {{-- Sua--}}
 
@@ -14,9 +15,11 @@
 
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
 
-    <link rel="stylesheet" href="{{asset('assets/bootstrap-5.3.2/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/fontawesome/css/theme.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/css/icons.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/css/theme.min.css')}}" type="text/css">
+
+
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 </head>
@@ -100,29 +103,29 @@
                 <div class="dropdown d-none d-sm-inline-block">
                     <button type="button" class="btn header-item waves-effect"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="mdi mdi-plus"></i> Create New
+                        <i class="mdi mdi-plus"></i> Tạo mới
                         <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                     </button>
                     <div class="dropdown-menu">
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            Application
+                        <a href="{{route('hotels.create')}}" class="dropdown-item notify-item">
+                            Khách sạn
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            Software
+                        <a href="{{route('bookings.create')}}" class="dropdown-item notify-item">
+                            Đặt phòng
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            EMS System
+                        <a href="#" class="dropdown-item notify-item">
+                            Đồ ăn
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            CRM App
+                        <a href="#" class="dropdown-item notify-item">
+                            Trò chơi
                         </a>
                     </div>
                 </div>
@@ -142,7 +145,7 @@
                         <form class="p-3">
                             <div class="form-group m-0">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search ..."
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..."
                                         aria-label="Recipient's username">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="submit"><i
@@ -157,67 +160,73 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
-                        <span class="d-none d-sm-inline-block ml-1">English</span>
+                        <img class="" src="{{asset('assets/images/flags/vn.jpg')}}" alt="Header Language" height="16">
+                        <span class="d-none d-sm-inline-block ml-1">Tiếng Việt</span>
                         <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="assets/images/flags/spain.jpg" alt="user-image" class="mr-1" height="12">
-                            <span class="align-middle">Spanish</span>
+                            <img src="{{asset('assets/images/flags/us.jpg')}}" alt="user-image" class="mr-1" height="12">
+                            <span class="align-middle">Tiếng Anh</span>
                         </a>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="assets/images/flags/germany.jpg" alt="user-image" class="mr-1" height="12">
-                            <span class="align-middle">German</span>
+                            <img src="{{asset('assets/images/flags/spain.jpg')}}" alt="user-image" class="mr-1" height="12">
+                            <span class="align-middle">Tiếng Tây Ban Nha</span>
                         </a>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="assets/images/flags/italy.jpg" alt="user-image" class="mr-1" height="12">
-                            <span class="align-middle">Italian</span>
+                            <img src="{{asset('assets/images/flags/germany.jpg')}}" alt="user-image" class="mr-1" height="12">
+                            <span class="align-middle">Tiếng Đức</span>
                         </a>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="assets/images/flags/russia.jpg" alt="user-image" class="mr-1" height="12">
-                            <span class="align-middle">Russian</span>
+                            <img src="{{asset('assets/images/flags/italy.jpg')}}" alt="user-image" class="mr-1" height="12">
+                            <span class="align-middle">Tiếng Ý</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <img src="{{asset('assets/images/flags/russia.jpg')}}" alt="user-image" class="mr-1" height="12">
+                            <span class="align-middle">Tiếng Nga</span>
                         </a>
                     </div>
                 </div>
 
                 <div class="dropdown d-inline-block">
-                    <button type="button" class="btn header-item noti-icon waves-effect"
+                    <button type="button" class="btn header-item noti-icon waves-effect " style="width: 66px"
                         id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <i class="mdi mdi-bell"></i>
-                        <span class="badge badge-danger badge-pill">3</span>
+                        <span class="badge badge-danger">3</span>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right"
                         aria-labelledby="page-header-notifications-dropdown">
                         <div class="p-3">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h6 class="m-0"> Notifications </h6>
+                                    <h6 class="m-0"> Thông báo </h6>
                                 </div>
                                 <div class="col-auto">
-                                    <a href="#!" class="small"> View All</a>
+                                    <a href="#!" class="small"> Xem tất cả</a>
                                 </div>
                             </div>
                         </div>
                         <div data-simplebar style="max-height: 230px;">
                             <a href="" class="text-reset notification-item">
                                 <div class="media">
-                                    <img src="assets/images/users/avatar-2.jpg"
+                                    <img src="{{asset('assets/images/users/avatar-2.jpg')}}"
                                         class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                     <div class="media-body">
-                                        <h6 class="mt-0 mb-1">Samuel Coverdale</h6>
-                                        <p class="font-size-12 mb-1">You have new follower on Instagram</p>
+                                        <h6 class="mt-0 mb-1">Khách hàng mới đặt phòng</h6>
+                                        <p class="font-size-12 mb-1">Có người mới đặt phòng #12.</p>
                                         <p class="font-size-12 mb-0 text-muted"><i
-                                                class="mdi mdi-clock-outline"></i> 2 min ago</p>
+                                                class="mdi mdi-clock-outline"></i> 2 phút trước</p>
                                     </div>
                                 </div>
                             </a>
@@ -229,11 +238,11 @@
                                         </span>
                                     </div>
                                     <div class="media-body">
-                                        <h6 class="mt-0 mb-1">Download Available !</h6>
-                                        <p class="font-size-12 mb-1">Latest version of admin is now available.
-                                            Please download here.</p>
+                                        <h6 class="mt-0 mb-1">Doanh thu tháng mới nhất !</h6>
+                                        <p class="font-size-12 mb-1">Doanh thu tháng mới nhất được được tổng hợp.
+                                            Vui lòng tải tại đây.</p>
                                         <p class="font-size-12 mb-0 text-muted"><i
-                                                class="mdi mdi-clock-outline"></i> 4 hours ago</p>
+                                                class="mdi mdi-clock-outline"></i> 4 giờ trước</p>
                                     </div>
                                 </div>
                             </a>
@@ -242,60 +251,89 @@
                                     <img src="assets/images/users/avatar-3.jpg"
                                         class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                     <div class="media-body">
-                                        <h6 class="mt-0 mb-1">Victoria Mendis</h6>
-                                        <p class="font-size-12 mb-1">Just upgraded to premium account.</p>
+                                        <h6 class="mt-0 mb-1">Khách hàng mới đặt phòng</h6>
+                                        <p class="font-size-12 mb-1">Có người mới đặt phòng #15.</p>
                                         <p class="font-size-12 mb-0 text-muted"><i
-                                                class="mdi mdi-clock-outline"></i> 1 day ago</p>
+                                                class="mdi mdi-clock-outline"></i> 1 ngày trước</p>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="p-2 border-top">
                             <a class="btn btn-sm btn-light btn-block text-center" href="javascript:void(0)">
-                                <i class="mdi mdi-arrow-down-circle mr-1"></i> Load More..
+                                <i class="mdi mdi-arrow-down-circle mr-1"></i> Xem thêm...
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="dropdown d-inline-block ml-2">
+
+                    @guest
+                    <div class="dropdown d-inline-block ml-2">
+                        <button type="button" class="btn header-item waves-effect"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/avatar-2.jpg')}}"
+                                alt="Header Avatar">
+                            <span class="d-none d-sm-inline-block ml-1">Khách</span>
+                            <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            @if (Route::has('login'))
+                                <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                    href="{{ route('login') }}">{{ __('Login') }}</a>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                    href="{{ route('register') }}">{{ __('Register') }}</a>
+                            @endif
+                        </div>
+                    </div>
+
+                    @else
+                    <div class="dropdown d-inline-block ml-2">
                     <button type="button" class="btn header-item waves-effect"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"
+                        <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/avatar-2.jpg')}}"
                             alt="Header Avatar">
-                        <span class="d-none d-sm-inline-block ml-1">Donald M.</span>
+                        <span class="d-none d-sm-inline-block ml-1">{{ Auth::user()->name }}</span>
                         <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item d-flex align-items-center justify-content-between"
                             href="javascript:void(0)">
-                            <span>Inbox</span>
+                            <span>Tin nhắn</span>
                             <span>
                                 <span class="badge badge-pill badge-info">3</span>
                             </span>
                         </a>
                         <a class="dropdown-item d-flex align-items-center justify-content-between"
                             href="javascript:void(0)">
-                            <span>Profile</span>
+                            <span>Trang cá nhân</span>
                             <span>
                                 <span class="badge badge-pill badge-warning">1</span>
                             </span>
                         </a>
                         <a class="dropdown-item d-flex align-items-center justify-content-between"
                             href="javascript:void(0)">
-                            Settings
+                            Cài đặt
                         </a>
                         <a class="dropdown-item d-flex align-items-center justify-content-between"
                             href="javascript:void(0)">
-                            <span>Lock Account</span>
+                            <span>Khóa tài khoản</span>
                         </a>
                         <a class="dropdown-item d-flex align-items-center justify-content-between"
-                            href="javascript:void(0)">
-                            <span>Log Out</span>
+                            href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
-                </div>
-
+                    </div>
+                    @endguest
             </div>
         </div>
     </header>
@@ -306,10 +344,10 @@
         <div data-simplebar class="h-100">
 
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo">
+                <a href="{{ url('/') }}" class="logo">
                     <i class="mdi mdi-album"></i>
                     <span>
-                        Xeloro
+                        nvd
                     </span>
                 </a>
             </div>
@@ -318,16 +356,27 @@
             <div id="sidebar-menu">
                 <!-- Left Menu Start -->
                 <ul class="metismenu list-unstyled" id="side-menu">
-                    <li class="menu-title">Menu</li>
+                    <li class="menu-title">Danh mục</li>
 
                     <li>
-                        <a href="index.html" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
-                                class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
+                        <a href="{{ url('/') }}" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span>Trang chủ</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/hotels" class=" waves-effect"><i
+                            class="mdi mdi-format-list-bulleted-type"></i><span>Danh sách khách sạn</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/bookings" class=" waves-effect"><i
+                            class="mdi mdi-table-merge-cells"></i><span>Danh sách đặt phòng</span>
+                        </a>
                     </li>
 
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect"><i
-                                class="mdi mdi-diamond-stone"></i><span>UI Elements</span></a>
+                                class="mdi mdi-diamond-stone"></i><span>Danh sách đồ ăn</span></a>
                         <ul class="sub-menu" aria-expanded="false">
                             <li><a href="ui-buttons.html">Buttons</a></li>
                             <li><a href="ui-cards.html">Cards</a></li>
@@ -414,8 +463,11 @@
                         </ul>
                     </li>
 
-                    <li><a href="calendar.html" class=" waves-effect"><i
-                                class="mdi mdi-calendar-range-outline"></i><span>Calendar</span></a></li>
+                    <li>
+                        <a href="calendar.html" class=" waves-effect"><i
+                            class="mdi mdi-calendar-range-outline"></i><span>Calendar</span>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect"><i
@@ -445,28 +497,42 @@
             <!-- Sidebar -->
         </div>
     </div>
-</div>
-    <!-- Left Sidebar End -->
 
-{{--  --}}
-        <main class="main-content">
-            <div class="page-content">
-                <div class="container-fluid">
-                    @yield('content')
+    <main class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        2024 © Quản lý đặt phòng khách sạn.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-right d-none d-sm-block">
+                            Thiết kế và xây dựng bởi Nguyễn Văn Dương
+                        </div>
+                    </div>
                 </div>
             </div>
-
-        </main>
+        </footer>
+    </main>
+</div>
     </div>
 
+
+
+
     {{-- jQuery --}}
-    <script src="{{asset('assets/fontawesome/js/all.min.js')}}"></script>
-    <script src="{{asset('assets/bootstrap-5.3.2/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('assets/jquery-3.7.1.min.js')}}"></script>
-    <script src="{{asset('assets/bootstrap-5.3.2/js/metismenu.min.js')}}"></script>
-    <script src="{{asset('assets/bootstrap-5.3.2/js/simplebar.min.js')}}"></script>
-    <script src="{{asset('assets/bootstrap-5.3.2/js/waves.js')}}"></script>
-    <script src="{{asset('assets/bootstrap-5.3.2/js/theme.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/js/metismenu.min.js')}}"></script>
+    <script src="{{asset('assets/js/waves.js')}}"></script>
+    <script src="{{asset('assets/js/simplebar.min.js')}}"></script>
+    <script src="{{asset('assets/js/theme.js')}}"></script>
 
     <script src="{{asset('assets/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
     <script src="{{asset('assets/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
