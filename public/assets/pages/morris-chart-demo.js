@@ -1,10 +1,3 @@
-/*
- Template Name: Xeloro - Admin & Dashboard Template
- Author: Myra Studio
- File: Morris
-*/
-
-
 $(function() {
   'use strict';
   if ($('#morris-line-example').length) {
@@ -108,37 +101,37 @@ $(function() {
       element: 'morris-bar-example',
       barColors: ['#3F51B5', '#00c2b2'],
       data: [{
-        y: '2013',
+        y: '2018',
         a: 80,
         b: 100
       },
       {
-        y: '2014',
+        y: '2019',
         a: 110,
         b: 130
       },
       {
-        y: '2015',
+        y: '2020',
         a: 90,
         b: 110
       },
       {
-        y: '2016',
+        y: '2021',
         a: 120,
         b: 140
       },
       {
-        y: '2017',
+        y: '2022',
         a: 110,
         b: 125
       },
       {
-        y: '2018',
+        y: '2023',
         a: 170,
         b: 190
       },
       {
-        y: '2019',
+        y: '2024',
         a: 120,
         b: 140
       }

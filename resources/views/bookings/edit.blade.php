@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="validationCustom03">Thời gian đặt phòng</label>
+                                        <label for="validationCustom03">Thời gian nhận phòng</label>
                                         <input value="{{ $booking->booking_checkin }}" required id="validationCustom03"
                                             name="booking_checkin" type="datetime-local" class="form-control"
                                             placeholder="">

@@ -1,10 +1,3 @@
-/*
- Template Name: Xeloro - Admin & Dashboard Template
- Author: Myra Studio
- File: Calendar
-*/
-
-
 !function($) {
   "use strict";
 
@@ -32,7 +25,7 @@
                   revertDuration: 0 //  original position after the drag
               });
           });
-          
+
           /* initialize the calendar */
 
           var date = new Date();
@@ -117,7 +110,7 @@
                       url: 'http://google.com/'
                   }]
           });
-          
+
            /*Add new event*/
           // Form to add new event
 
@@ -166,7 +159,7 @@
   $.CalendarPage = new CalendarPage, $.CalendarPage.Constructor = CalendarPage
 }(window.jQuery),
 
-//initializing 
+//initializing
 function($) {
   "use strict";
   $.CalendarPage.init()

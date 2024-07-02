@@ -1,10 +1,3 @@
-/*
- Template Name: Xeloro - Admin & Dashboard Template
- Author: Myra Studio
- File: Mask js
-*/
-
-
 $( document ).ready(function() {
   $('[data-toggle="input-mask"]').each(function (idx, obj) {
       var maskFormat = $(obj).data("maskFormat");

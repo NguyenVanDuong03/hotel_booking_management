@@ -1,10 +1,3 @@
-/*
- Template Name: Xeloro - Admin & Dashboard Template
- Author: Myra Studio
- File: Chart Js
-*/
-
-
 (function($) {
   'use strict';
   $(function() {
@@ -16,19 +9,19 @@
           datasets: [{
             data: [21, 16, 48, 31],
             backgroundColor: [
-              '#3F51B5', 
-              '#f8ac5a', 
-              '#00c2b2', 
+              '#3F51B5',
+              '#f8ac5a',
+              '#00c2b2',
               '#f15050'
             ],
             borderColor: [
-              '#3F51B5', 
-              '#f8ac5a', 
-              '#00c2b2', 
+              '#3F51B5',
+              '#f8ac5a',
+              '#00c2b2',
               '#f15050'
             ],
           }],
-      
+
           // These labels appear in the legend and in the tooltips when hovering different arcs
           labels: [
             'Samsung',
@@ -110,7 +103,7 @@
         options: options
       });
     }
-    
+
     if ($("#areaChart").length) {
       var areaData = {
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -199,7 +192,7 @@
       });
     }
     areaChart
-    
+
     if ($("#barChart").length) {
       var currentChartCanvas = $("#barChart").get(0).getContext("2d");
       var currentChart = new Chart(currentChartCanvas, {
@@ -221,7 +214,7 @@
         options: {
           responsive: true,
           maintainAspectRatio: true,
-          
+
           scales: {
             yAxes: [{
               display: false,

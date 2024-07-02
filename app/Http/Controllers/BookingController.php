@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookingRequest;
+use App\Http\Requests\BookingStoreRequest;
 use App\Models\Booking;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
@@ -17,20 +19,24 @@ class BookingController extends Controller
     {
         $numberOfRecord = Booking::count();
         $perPage = 9;
-        $numberOfPage = $numberOfRecord % $perPage == 0?
-             (int) $numberOfRecord / $perPage: (int) $numberOfRecord / $perPage + 1;
+        $numberOfPage = $numberOfRecord % $perPage == 0 ? (int) $numberOfRecord / $perPage : (int) $numberOfRecord / $perPage + 1;
         $pageIndex = 1;
-        if($request->has('pageIndex'))
+        if ($request->has('pageIndex')) {
             $pageIndex = $request->input('pageIndex');
-        if($pageIndex < 1) $pageIndex = 1;
-        if($pageIndex > $numberOfPage) $pageIndex = $numberOfPage;
+        }
+        if ($pageIndex < 1) {
+            $pageIndex = 1;
+        }
+        if ($pageIndex > $numberOfPage) {
+            $pageIndex = $numberOfPage;
+        }
         //
         $bookings = Booking::orderByDesc('booking_id')
-                ->skip(($pageIndex-1)*$perPage)
-                ->take($perPage)
-                ->get();
+            ->skip(($pageIndex - 1) * $perPage)
+            ->take($perPage)
+            ->get();
         // dd($arr);
-        return view('bookings.index', compact( 'bookings', 'numberOfPage', 'pageIndex'));
+        return view('bookings.index', compact('bookings', 'numberOfPage', 'pageIndex'));
     }
 
     /**
@@ -45,19 +51,9 @@ class BookingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BookingStoreRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'booking_guest' => ['required','max:50'],
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-        // success
-        booking::create($request->all());
+        Booking::create($request->all());
         return redirect()->route('bookings.index')->with('mes', 'Thêm thành công!');
     }
 
@@ -67,10 +63,11 @@ class BookingController extends Controller
     public function show(Booking $booking, request $request)
     {
         $pageIndex = 1;
-        if($request->has('pageIndex')) $pageIndex = $request->input('pageIndex');
+        if ($request->has('pageIndex')) {
+            $pageIndex = $request->input('pageIndex');
+        }
         $hotel = $booking->gethotel();
         return view('bookings.show', compact('booking', 'pageIndex', 'hotel'));
-
     }
 
     /**
@@ -79,41 +76,33 @@ class BookingController extends Controller
     public function edit(Booking $booking, request $request)
     {
         $pageIndex = 1;
-        if($request->has('pageIndex')) $pageIndex = $request->input('pageIndex');
-        $hotels = hotel::all();
+        if ($request->has('pageIndex')) {
+            $pageIndex = $request->input('pageIndex');
+        }
+        $hotels = Hotel::all();
         return view('bookings.edit', compact('booking', 'hotels', 'pageIndex'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Booking $booking)
+    public function update(BookingRequest $request, Booking $booking)
     {
-        $validator = Validator::make($request->all(), [
-            'booking_guest' => ['required','max:50'],
-            'booking_checkin' => ['required', 'date'],
-            'booking_checkout' => ['required', 'date', 'after:booking_checkin'],
-        ]);
-
         $booking_checkin = $request->input('booking_checkin');
         $booking_checkout = $request->input('booking_checkout');
         $booking_checkins = new DateTime($booking_checkin);
         $booking_checkouts = new DateTime($booking_checkout);
         $intevel = $booking_checkouts->diff($booking_checkins);
-        $hours = ($intevel->d)* 24 + $intevel->h;
+        $hours = $intevel->d * 24 + $intevel->h;
         $totalMoney = $hours * $booking->getHotelPrice();
         $booking->booking_number_of_hour = $hours;
         $booking->booking_total_price = $totalMoney;
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-        // success
         $pageIndex = $request->input('pageIndex');
         $booking->update($request->all());
-        return redirect()->route('bookings.index', ['pageIndex' => $pageIndex])->with('mes', 'Cập nhật thành công!');
+        return redirect()
+            ->route('bookings.index', ['pageIndex' => $pageIndex])
+            ->with('mes', 'Cập nhật thành công!');
     }
 
     /**
@@ -122,8 +111,12 @@ class BookingController extends Controller
     public function destroy(Booking $booking, request $request)
     {
         $pageIndex = 1;
-        if($request->has('pageIndex')) $pageIndex = $request->input('pageIndex');
+        if ($request->has('pageIndex')) {
+            $pageIndex = $request->input('pageIndex');
+        }
         $booking->delete();
-        return redirect()->route('bookings.index', ['pageIndex' => $pageIndex])->with('mes' , 'Xóa thành công!');
+        return redirect()
+            ->route('bookings.index', ['pageIndex' => $pageIndex])
+            ->with('mes', 'Xóa thành công!');
     }
 }

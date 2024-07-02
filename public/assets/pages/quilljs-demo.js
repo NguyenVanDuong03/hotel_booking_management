@@ -1,10 +1,3 @@
-/*
- Template Name: Xeloro - Admin & Dashboard Template
- Author: Myra Studio
- File: Quill Js
-*/
-
-
 // Snow theme
 var quill = new Quill('#snow-editor', {
     theme: 'snow',

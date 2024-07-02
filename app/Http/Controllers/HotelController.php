@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HotelRequest;
 use App\Models\Hotel;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Validator;
@@ -16,20 +17,24 @@ class HotelController extends Controller
     {
         $numberOfRecord = Hotel::count();
         $perPage = 9;
-        $numberOfPage = $numberOfRecord % $perPage == 0?
-             (int) $numberOfRecord / $perPage: (int) $numberOfRecord / $perPage + 1;
+        $numberOfPage = $numberOfRecord % $perPage == 0 ? (int) $numberOfRecord / $perPage : (int) $numberOfRecord / $perPage + 1;
         $pageIndex = 1;
-        if($request->has('pageIndex'))
+        if ($request->has('pageIndex')) {
             $pageIndex = $request->input('pageIndex');
-        if($pageIndex < 1) $pageIndex = 1;
-        if($pageIndex > $numberOfPage) $pageIndex = $numberOfPage;
+        }
+        if ($pageIndex < 1) {
+            $pageIndex = 1;
+        }
+        if ($pageIndex > $numberOfPage) {
+            $pageIndex = $numberOfPage;
+        }
         //
         $hotels = Hotel::orderByDesc('hotel_id')
-                ->skip(($pageIndex-1)*$perPage)
-                ->take($perPage)
-                ->get();
+            ->skip(($pageIndex - 1) * $perPage)
+            ->take($perPage)
+            ->get();
         // dd($arr);
-        return view('hotels.index', compact( 'hotels', 'numberOfPage', 'pageIndex'));
+        return view('hotels.index', compact('hotels', 'numberOfPage', 'pageIndex'));
     }
 
     /**
@@ -44,22 +49,9 @@ class HotelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(HotelRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'hotel_name' => ['required','max:50'],
-            'hotel_address' => ['required','max:80'],
-            'hotel_description' => ['required','max:100'],
-            'hotel_price' => ['required','max:20'],
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-        // success
-        hotel::create($request->all());
+        Hotel::create($request->all());
         return redirect()->route('hotels.index')->with('mes', 'Thêm phòng thành công!');
     }
 
@@ -69,9 +61,10 @@ class HotelController extends Controller
     public function show(Hotel $hotel, Request $request)
     {
         $pageIndex = 1;
-        if($request->has('pageIndex')) $pageIndex = $request->input('pageIndex');
+        if ($request->has('pageIndex')) {
+            $pageIndex = $request->input('pageIndex');
+        }
         return view('hotels.show', compact('hotel', 'pageIndex'));
-
     }
 
     /**
@@ -80,32 +73,22 @@ class HotelController extends Controller
     public function edit(Hotel $hotel, Request $request)
     {
         $pageIndex = 1;
-        if($request->has('pageIndex')) $pageIndex = $request->input('pageIndex');
+        if ($request->has('pageIndex')) {
+            $pageIndex = $request->input('pageIndex');
+        }
         return view('hotels.edit', compact('hotel', 'pageIndex'));
-
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(HotelRequest $request, Hotel $hotel)
     {
-        $validator = Validator::make($request->all(), [
-            'hotel_name' => ['required','max:50'],
-            'hotel_address' => ['required','max:80'],
-            'hotel_description' => ['required','max:100'],
-            'hotel_price' => ['required','max:20'],
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-        // success
         $pageIndex = $request->input('pageIndex');
         $hotel->update($request->all());
-        return redirect()->route('hotels.index', ['pageIndex' => $pageIndex])->with('mes', 'Cập nhật phòng thành công!');
+        return redirect()
+            ->route('hotels.index', ['pageIndex' => $pageIndex])
+            ->with('mes', 'Cập nhật phòng thành công!');
     }
 
     /**
@@ -114,8 +97,12 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel, Request $request)
     {
         $pageIndex = 1;
-        if($request->has('pageIndex')) $pageIndex = $request->input('pageIndex');
+        if ($request->has('pageIndex')) {
+            $pageIndex = $request->input('pageIndex');
+        }
         $hotel->delete();
-        return redirect()->route('hotels.index', ['pageIndex' => $pageIndex])->with('mes' , 'Xóa phòng thành công!');
+        return redirect()
+            ->route('hotels.index', ['pageIndex' => $pageIndex])
+            ->with('mes', 'Xóa phòng thành công!');
     }
 }

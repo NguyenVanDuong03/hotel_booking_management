@@ -1,9 +1,3 @@
-/*
- Template Name: Xeloro - Admin & Dashboard Template
- Author: Myra Studio
- File: Dashboard
-*/
-
 $(function() {
   'use strict';
   if ($("#morris-bar-example").length) {
@@ -12,52 +6,52 @@ $(function() {
       barColors: ['#ebeef1', '#00c2b2'],
       data: [
         {
-          y: '2010',
+          y: '2015',
           a: 80,
           b: 100
         },
         {
-          y: '2011',
+          y: '2016',
           a: 110,
           b: 130
         },
         {
-          y: '2012',
+          y: '2017',
           a: 90,
           b: 110
         },
       {
-        y: '2013',
+        y: '2018',
         a: 80,
         b: 100
       },
       {
-        y: '2014',
+        y: '2019',
         a: 110,
         b: 130
       },
       {
-        y: '2015',
+        y: '2020',
         a: 90,
-        b: 110
+        b: 120
       },
       {
-        y: '2016',
+        y: '2021',
         a: 120,
         b: 140
       },
       {
-        y: '2017',
+        y: '2022',
         a: 110,
         b: 125
       },
       {
-        y: '2018',
+        y: '2023',
         a: 170,
         b: 190
       },
       {
-        y: '2019',
+        y: '2024',
         a: 120,
         b: 140
       }
@@ -68,7 +62,7 @@ $(function() {
       gridLineColor: '#eef0f2',
       resize: true,
       barSizeRatio: 0.4,
-      labels: ['iPhone 8', 'Samsung Gallexy']
+      labels: ['Dịch vụ', 'Phòng thuê']
     });
   }
 
@@ -95,7 +89,7 @@ $(function() {
     });
   }
   $( document ).ready(function() {
-    
+
     var DrawSparkline = function() {
         $('#sparkline1').sparkline([25, 23, 26, 24, 25, 32, 30, 24, 19], {
             type: 'line',
@@ -114,7 +108,7 @@ $(function() {
       }
 
         DrawSparkline();
-  
+
   var resizeChart;
 
   $(window).resize(function(e) {

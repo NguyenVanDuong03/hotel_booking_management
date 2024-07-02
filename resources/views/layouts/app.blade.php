@@ -312,7 +312,7 @@
                                         href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Đăng xuất') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
@@ -440,7 +440,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                2024 © Quản lý đặt phòng khách sạn.
+                                2024 © Quản lý đặt phòng khách sạn NVD.
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-right d-none d-sm-block">
@@ -477,6 +477,7 @@
     <script src="{{ asset('assets/pages/sweet-alert-demo.js') }}"></script>
     <script src="{{ asset('assets/pages/validation-demo.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>

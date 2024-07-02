@@ -26,44 +26,35 @@
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="validationCustom01">Tên phòng</label>
-                                        <input value="{{ old('hotel_name') }}" required id="validationCustom01"
-                                            name = 'hotel_name' type="text" class="form-control"
-                                            placeholder="vd: Phòng 1">
-                                    </div>
+                                    <label for="validationCustom01">Tên phòng</label>
+                                    <input value="{{ old('hotel_name') }}" required id="validationCustom01"
+                                        name = 'hotel_name' type="text" class="form-control" placeholder="vd: Phòng 1">
                                     @error('hotel_name')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="validationCustom02">Địa chỉ phòng</label>
-                                        <input value="{{ old('hotel_address') }}" required id="validationCustom02"
-                                            name = 'hotel_address' type="text" class="form-control"
-                                            placeholder="vd: 175 Tây Sơn">
-                                    </div>
+                                    <label for="validationCustom02">Địa chỉ phòng</label>
+                                    <input value="{{ old('hotel_address') }}" required id="validationCustom02"
+                                        name = 'hotel_address' type="text" class="form-control"
+                                        placeholder="vd: 175 Tây Sơn">
                                     @error('hotel_address')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Mô tả</label>
-                                        <textarea name="hotel_description" class="form-control" placeholder="vd: Sang trọng" id="exampleFormControlTextarea1"
-                                            required rows="3">{{ old('hotel_description') }}</textarea>
-                                    </div>
+                                    <label for="exampleFormControlTextarea1">Mô tả</label>
+                                    <textarea name="hotel_description" class="form-control" placeholder="vd: Sang trọng" id="exampleFormControlTextarea1"
+                                        required rows="3">{{ old('hotel_description') }}</textarea>
                                     @error('hotel_description')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="validationCustom03">Giá thuê ($)</label>
-                                        <input value="{{ old('hotel_price') }}" required id="validationCustom03"
-                                            name = 'hotel_price' type="number" class="form-control" placeholder="vd: 100"
-                                            min="1">
-                                    </div>
+                                    <label for="validationCustom03">Giá thuê ($)</label>
+                                    <input value="{{ old('hotel_price') }}" required id="validationCustom03"
+                                        name = 'hotel_price' type="number" class="form-control" placeholder="vd: 100"
+                                        min="1">
                                     @error('hotel_price')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror

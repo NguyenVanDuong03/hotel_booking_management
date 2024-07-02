@@ -28,10 +28,13 @@
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
                                         <label>Tên phòng</label>
-                                        <select class="form-control" data-toggle="select2" name="hotel_id" id="hotel-select">
+                                        <select class="form-control" data-toggle="select2" name="hotel_id"
+                                            id="hotel-select">
                                             <optgroup label="Chọn phòng phù hợp">
-                                                @foreach($hotels as $item)
-                                                    <option value="{{ $item->hotel_id }}" data-price="{{ $item->hotel_price }}">{{ $item->hotel_name }}</option>
+                                                @foreach ($hotels as $item)
+                                                    <option value="{{ $item->hotel_id }}"
+                                                        data-price="{{ $item->hotel_price }}">{{ $item->hotel_name }}
+                                                    </option>
                                                 @endforeach
                                             </optgroup>
                                         </select>
@@ -51,9 +54,10 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="validationCustom03">Thời gian đặt phòng</label>
+                                        <label for="validationCustom03">Thời gian nhận phòng</label>
                                         <input value="{{ old('booking_checkin') }}" required id="validationCustom03"
-                                            name="booking_checkin" type="datetime-local" class="form-control" placeholder="vd: 100">
+                                            name="booking_checkin" type="datetime-local" class="form-control"
+                                            placeholder="vd: 100">
                                     </div>
                                     @error('booking_checkin')
                                         <div class="text-danger">{{ $message }}</div>
@@ -63,13 +67,16 @@
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
                                         <label>Giá thuê ($)</label>
-                                        <input value="" readonly id="hotel-price" type="text" class="form-control" placeholder="">
+                                        <input value="" readonly id="hotel-price" type="text" class="form-control"
+                                            placeholder="">
                                     </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end my-3">
-                                <button type="submit" class="btn btn-primary waves-effect waves-light mx-3 px-4">Thêm</button>
-                                <a href="{{ route('bookings.index') }}" class="btn btn-danger waves-effect waves-light">Quay lại</a>
+                                <button type="submit"
+                                    class="btn btn-primary waves-effect waves-light mx-3 px-4">Thêm</button>
+                                <a href="{{ route('bookings.index') }}" class="btn btn-danger waves-effect waves-light">Quay
+                                    lại</a>
                             </div>
                         </form>
 
@@ -97,6 +104,5 @@
                 priceElement.value = price + " $";
             });
         });
-
     </script>
 @endsection

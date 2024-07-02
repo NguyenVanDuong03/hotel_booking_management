@@ -1,10 +1,3 @@
-/*
- Template Name: Xeloro - Admin & Dashboard Template
- Author: Myra Studio
- File: Google Charts
-*/
-
-
 $(function () {
   'use strict';
 

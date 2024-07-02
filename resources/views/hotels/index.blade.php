@@ -3,7 +3,7 @@
 @section('title', 'Danh sách phòng')
 
 @section('content')
-{{-- title --}}
+    {{-- title --}}
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-flex align-items-center justify-content-between">
@@ -11,7 +11,7 @@
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{url('/')}}">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Trang chủ</a></li>
                         <li class="breadcrumb-item active">Danh sách phòng</li>
                     </ol>
                 </div>
@@ -53,8 +53,8 @@
                                         href="{{ route('hotels.edit', ['hotel' => $item->hotel_id, 'pageIndex' => $pageIndex]) }}"><i
                                             class="mdi mdi-pen"></i></a></td>
                                 <td><button class="btn btn-danger" data-bs-toggle='modal'
-                                        data-bs-target='#A{{ $item->hotel_id }}'><i
-                                            class="mdi mdi-trash-can"></i></button></td>
+                                        data-bs-target='#A{{ $item->hotel_id }}'><i class="mdi mdi-trash-can"></i></button>
+                                </td>
 
 
                                 <!-- Modal -->
@@ -63,9 +63,11 @@
                                     <div class='modal-dialog'>
                                         <div class='modal-content'>
                                             <div class='modal-header'>
-                                                <h1 class='modal-title fs-5 text-danger' id='exampleModalLabel'>Xác nhận xóa</h1>
-                                                <button type='button' class='btn-close' data-bs-dismiss='modal' style="border: none"
-                                                    aria-label='Close'><i class="mdi mdi-close"></i></button>
+                                                <h1 class='modal-title fs-5 text-danger' id='exampleModalLabel'>Xác nhận xóa
+                                                </h1>
+                                                <button type='button' class='btn-close' data-bs-dismiss='modal'
+                                                    style="border: none" aria-label='Close'><i
+                                                        class="mdi mdi-close"></i></button>
                                             </div>
                                             <div class='modal-body'>
                                                 Bạn có chắc muốn xóa phòng này?
@@ -94,16 +96,19 @@
 
     <!-- paginating  -->
     <div class="d-flex justify-content-center align-items-center my-2">
-        <a class="btn btn-success mx-1" href="{{route('hotels.index', ['pageIndex' => $pageIndex - 1])}}"><</a>
-        @for($i = 1; $i <= $numberOfPage; $i++)
-           @if($pageIndex == $i)
-               <a class="btn btn-primary mx-1" href="{{route('hotels.index', ['pageIndex' => $i])}}">{{$i}}</a>
-           @else
-               <a class="btn btn-success mx-1" href="{{route('hotels.index', ['pageIndex' => $i])}}">{{$i}}</a>
-           @endif
-        @endfor
-        <a class="btn btn-success mx-1" href="{{route('hotels.index', ['pageIndex' => $pageIndex + 1])}}">></a>
-   </div>
+        <a class="btn btn-success mx-1" href="{{ route('hotels.index', ['pageIndex' => $pageIndex - 1]) }}">
+            << /a>
+                @for ($i = 1; $i <= $numberOfPage; $i++)
+                    @if ($pageIndex == $i)
+                        <a class="btn btn-primary mx-1"
+                            href="{{ route('hotels.index', ['pageIndex' => $i]) }}">{{ $i }}</a>
+                    @else
+                        <a class="btn btn-success mx-1"
+                            href="{{ route('hotels.index', ['pageIndex' => $i]) }}">{{ $i }}</a>
+                    @endif
+                @endfor
+                <a class="btn btn-success mx-1" href="{{ route('hotels.index', ['pageIndex' => $pageIndex + 1]) }}">></a>
+    </div>
 
 
     <!-- modal inform -->

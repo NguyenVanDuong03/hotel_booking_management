@@ -1,10 +1,3 @@
-/*
- Template Name: Xeloro - Admin & Dashboard Template
- Author: Myra Studio
- File: Vector Map
-*/
-
-
 (function($) {
   'use strict';
   $(function() {
@@ -126,7 +119,7 @@
           }
       }});
     }
-    
+
     if ($("#uk-map").length) {
       $('#uk-map').vectorMap({map: 'uk_mill_en',backgroundColor: 'transparent',
         regionStyle: {
@@ -135,7 +128,7 @@
           }
       }});
     }
-    
+
     if ($("#chicago-map").length) {
       $('#chicago-map').vectorMap({map: 'us-il-chicago_mill_en',backgroundColor: 'transparent',
         regionStyle: {

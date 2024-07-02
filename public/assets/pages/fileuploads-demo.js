@@ -1,10 +1,3 @@
-/*
- Template Name: Xeloro - Admin & Dashboard Template
- Author: Myra Studio
- File: File Uploads
-*/
-
-
 $('.dropify').dropify({
     messages: {
         'default': 'Drag and drop a file here or click',
