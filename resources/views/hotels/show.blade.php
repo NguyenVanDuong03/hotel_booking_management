@@ -49,8 +49,8 @@
                                 <td>{{$hotel->hotel_description}}</td>
                             </tr>
                             <tr>
-                                <th scope="row">Giá thuê</th>
-                                <td>{{$hotel->hotel_price}} $</td>
+                                <th scope="row">Giá thuê ($)</th>
+                                <td>{{$hotel->hotel_price}}</td>
                             </tr>
                         </tbody>
                     </table>

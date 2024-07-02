@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="validationCustom03">Giá thuê</label>
+                                        <label for="validationCustom03">Giá thuê ($)</label>
                                         <input value="{{ old('hotel_price') }}" required id="validationCustom03"
                                             name = 'hotel_price' type="number" class="form-control" placeholder="vd: 100"
                                             min="1">

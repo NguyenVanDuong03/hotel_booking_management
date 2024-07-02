@@ -52,6 +52,10 @@
                                 <td>{{$booking->booking_checkout}}</td>
                             </tr>
                             <tr>
+                                <th scope="row">Giá thuê</th>
+                                <td>{{$booking->getHotelPrice()}} $</td>
+                            </tr>
+                            <tr>
                                 <th scope="row">Số giờ sử dụng</th>
                                 <td>{{$booking->booking_number_of_hour}}h</td>
                             </tr>

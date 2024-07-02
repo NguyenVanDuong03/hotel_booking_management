@@ -58,7 +58,7 @@ class BookingController extends Controller
         }
         // success
         booking::create($request->all());
-        return redirect()->route('bookings.index')->with('mes', 'Add success!');
+        return redirect()->route('bookings.index')->with('mes', 'Thêm thành công!');
     }
 
     /**
@@ -113,7 +113,7 @@ class BookingController extends Controller
         // success
         $pageIndex = $request->input('pageIndex');
         $booking->update($request->all());
-        return redirect()->route('bookings.index', ['pageIndex' => $pageIndex])->with('mes', 'Update success!');
+        return redirect()->route('bookings.index', ['pageIndex' => $pageIndex])->with('mes', 'Cập nhật thành công!');
     }
 
     /**
@@ -124,7 +124,6 @@ class BookingController extends Controller
         $pageIndex = 1;
         if($request->has('pageIndex')) $pageIndex = $request->input('pageIndex');
         $booking->delete();
-        return redirect()->route('bookings.index', ['pageIndex' => $pageIndex])->with('mes' , 'Delete success!');
-
+        return redirect()->route('bookings.index', ['pageIndex' => $pageIndex])->with('mes' , 'Xóa thành công!');
     }
 }

@@ -31,7 +31,7 @@
                             <th>Tên phòng</th>
                             <th>Địa chỉ</th>
                             <th>Mô tả</th>
-                            <th>Giá phòng</th>
+                            <th>Giá phòng ($)</th>
                             <th class="text-center" colspan="3">Chức năng</th>
                         </tr>
                     </thead>
@@ -44,7 +44,7 @@
                                 <td>{{ $item->hotel_name }}</td>
                                 <td>{{ $item->hotel_address }}</td>
                                 <td>{{ $item->hotel_description }}</td>
-                                <td>{{ $item->hotel_price }} $</td>
+                                <td>{{ $item->hotel_price }}</td>
 
                                 <td><a class="btn btn-success"
                                         href="{{ route('hotels.show', ['hotel' => $item->hotel_id, 'pageIndex' => $pageIndex]) }}"><i

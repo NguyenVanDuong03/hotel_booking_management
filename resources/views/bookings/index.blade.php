@@ -33,7 +33,7 @@
                         <th scope="col">Tên khách hàng</th>
                         <th scope="col">Giờ đặt phòng</th>
                         <th scope="col">Giờ trả phòng</th>
-                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Tổng tiền ($)</th>
                         <th scope="col" class="text-center" colspan="3">Chức năng</th>
                     </tr>
                 </thead>
@@ -47,7 +47,7 @@
                             <td>{{$item->booking_guest}}</td>
                             <td>{{$item->booking_checkin}}</td>
                             <td>{{$item->booking_checkout}}</td>
-                            <td>{{$item->booking_total_price}} $</td>
+                            <td>{{$item->booking_total_price}}</td>
 
                             <td><a class="btn btn-success"
                                     href="{{ route('bookings.show', ['booking' => $item->booking_id, 'pageIndex' => $pageIndex]) }}"><i
