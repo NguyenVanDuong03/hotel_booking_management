@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Homepage')
+@section('title', 'Trang chủ')
 
 @section('content')
 <div class="d-flex justify-content-center container pt-5 pb-5 align-items-center gap-3">

@@ -1,103 +1,127 @@
 @extends('layouts.app')
 
-@section('title', 'List')
+@section('title', 'Danh sách đặt phòng')
 
 @section('content')
-<h2 class="text-center text text-success my-4 text-uppercase text-decoration-underline">Manager booking</h2>
 
+{{-- title --}}
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Danh sách đặt phòng</h4>
 
-    <div class="container">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="{{url('/')}}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Danh sách đặt phòng</li>
+                </ol>
+            </div>
 
-        <a href="{{route('bookings.create')}}">
-            <button class="btn btn-success mb-3"><i class="fa-regular fa-square-plus"></i> Add booking</button>
-        </a>
-        <div class="row">
+        </div>
+    </div>
+</div>
 
-            <table class="table table-light table-hover align-middle text-center">
-                <thead class="table-primary text-center">
+{{-- table --}}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <table id="basic-datatable" class="table dt-responsive nowrap">
+                <thead>
                     <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Hotel Name</th>
-                    <th scope="col">Guest Name</th>
-                    <th scope="col">Checkin</th>
-                    <th scope="col">Checkout</th>
-                    <th scope="col">Total Money</th>
-
-                    <th scope="col" class="text-center" colspan="3">Option</th>
-
+                        <th scope="col">#</th>
+                        <th scope="col">Tên phòng</th>
+                        <th scope="col">Tên khách hàng</th>
+                        <th scope="col">Giờ đặt phòng</th>
+                        <th scope="col">Giờ trả phòng</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col" class="text-center" colspan="3">Chức năng</th>
                     </tr>
                 </thead>
+
+
                 <tbody>
-                        @foreach($bookings as $item)
-                            <tr>
-                                <th scope="row">{{$item->booking_id}}</th>
-                                <td>{{$item->getHotelName()}}</td>
-                                <td>{{$item->booking_guest}}</td>
-                                <td>{{$item->booking_checkin}}</td>
-                                <td>{{$item->booking_checkout}}</td>
-                                <td>{{$item->booking_total_price}}</td>
+                    @foreach ($bookings as $item)
+                        <tr>
+                            <th scope="row">{{$item->booking_id}}</th>
+                            <td>{{$item->getHotelName()}}</td>
+                            <td>{{$item->booking_guest}}</td>
+                            <td>{{$item->booking_checkin}}</td>
+                            <td>{{$item->booking_checkout}}</td>
+                            <td>{{$item->booking_total_price}} $</td>
 
-                                <td ><a class="btn btn-success" href="{{route('bookings.show', ['booking' => $item->booking_id, 'pageIndex' => $pageIndex])}}"><i class="fa-regular fa-eye"></i></a></td>
-                                <td ><a class="btn btn-danger" href="{{route('bookings.edit', ['booking' => $item->booking_id, 'pageIndex' => $pageIndex])}}"><i class="fa-regular fa-pen-to-square"></i></a></td>
-                                <td ><button class="btn btn-warning" data-bs-toggle='modal'   data-bs-target='#A{{$item->booking_id}}'><i class="fa-regular fa-trash-can"></i></button></td>
+                            <td><a class="btn btn-success"
+                                    href="{{ route('bookings.show', ['booking' => $item->booking_id, 'pageIndex' => $pageIndex]) }}"><i
+                                        class="mdi mdi-eye"></i></a></td>
+                            <td><a class="btn btn-warning"
+                                    href="{{ route('bookings.edit', ['booking' => $item->booking_id, 'pageIndex' => $pageIndex]) }}"><i
+                                        class="mdi mdi-pen"></i></a></td>
+                            <td><button class="btn btn-danger" data-bs-toggle='modal'
+                                    data-bs-target='#A{{ $item->booking_id }}'><i
+                                        class="mdi mdi-trash-can"></i></button></td>
 
 
-                                <!-- Modal -->
-                                <div class='modal fade' id='A{{$item->booking_id}}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                                    <div class='modal-dialog'>
-                                        <div class='modal-content'>
-                                            <div class='modal-header'>
-                                                <h1 class='modal-title fs-5 text-danger' id='exampleModalLabel'>Confirm deletion</h1>
-                                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                            </div>
-                                            <div class='modal-body'>
-                                                Are you sure you want to delete this information?
-                                            </div>
-                                            <div class='modal-footer'>
-                                                <form action="{{route('bookings.destroy', ['pageIndex' => $pageIndex, 'booking' => $item->booking_id])}}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit"  class='btn btn-primary'>Agree</button>
-                                                </form>
-                                                <button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Back</button>
-                                            </div>
+                            <!-- Modal -->
+                            <div class='modal fade' id='A{{ $item->booking_id }}' tabindex='-1'
+                                aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                <div class='modal-dialog'>
+                                    <div class='modal-content'>
+                                        <div class='modal-header'>
+                                            <h1 class='modal-title fs-5 text-danger' id='exampleModalLabel'>Xác nhận xóa</h1>
+                                            <button type='button' class='btn-close' data-bs-dismiss='modal' style="border: none"
+                                                aria-label='Close'><i class="mdi mdi-close"></i></button>
+                                        </div>
+                                        <div class='modal-body'>
+                                            Bạn có chắc muốn xóa dữ liệu này?
+                                        </div>
+                                        <div class='modal-footer'>
+                                            <form
+                                                action="{{ route('bookings.destroy', ['pageIndex' => $pageIndex, 'booking' => $item->booking_id]) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class='btn btn-primary px-4'>Có</button>
+                                            </form>
+                                            <button type='button' class='btn btn-danger'
+                                                data-bs-dismiss='modal'>Không</button>
                                         </div>
                                     </div>
                                 </div>
-                            </tr>
-                        @endforeach
+                            </div>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+</div>
 
     <!-- paginating  -->
 
     <div class="d-flex justify-content-center align-items-center my-2">
-         <a class="btn btn-success" href="{{route('bookings.index', ['pageIndex' => $pageIndex - 1])}}"><</a>
-         @for($i = 1; $i <= $numberOfPage; $i++)
-            @if($pageIndex == $i)
-                <a class="btn btn-primary ms-2" href="{{route('bookings.index', ['pageIndex' => $i])}}">{{$i}}</a>
-            @else
-                <a class="btn btn-success ms-2" href="{{route('bookings.index', ['pageIndex' => $i])}}">{{$i}}</a>
-            @endif
-         @endfor
-         <a class="btn btn-success ms-2" href="{{route('bookings.index', ['pageIndex' => $pageIndex + 1])}}">></a>
-    </div>
+        <a class="btn btn-success mx-1" href="{{route('bookings.index', ['pageIndex' => $pageIndex - 1])}}"><</a>
+        @for($i = 1; $i <= $numberOfPage; $i++)
+           @if($pageIndex == $i)
+               <a class="btn btn-primary mx-1" href="{{route('bookings.index', ['pageIndex' => $i])}}">{{$i}}</a>
+           @else
+               <a class="btn btn-success mx-1" href="{{route('bookings.index', ['pageIndex' => $i])}}">{{$i}}</a>
+           @endif
+        @endfor
+        <a class="btn btn-success mx-1" href="{{route('bookings.index', ['pageIndex' => $pageIndex + 1])}}">></a>
+   </div>
 
 
     <!-- modal inform -->
 
 
-    <div id="myDialog" style="display: none;" class="px-5 py-3 rounded-3">
-        <h4 class="text-primary fw-bold fs-4">Notification</h4>
+    <div id="myDialog" style="display: none;" class="px-5 py-3 rounded-3 text-center">
+        <h4 class="text-primary fw-bold fs-4 ">Thông báo</h4>
         <p class="text-success">{{ session('mes') }}</p>
-        <button id="confirmButton" class="float-end rounded-2">Agree</button>
+        <button id="confirmButton" class="float-end rounded-2 px-3">OK</button>
     </div>
     <style>
         #myDialog {
             position: fixed;
-            width: 500px;
+            width: 420px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);

@@ -1,78 +1,86 @@
 @extends('layouts.app')
+@section('title', 'Thêm khách sạn')
 @section('content')
-<div class="container">
-    <div class="row p-3">
-        <h4 class="text-uppercase text-decoration-underline text-center fw-bold text-success">Add new hotel</h4>
-        <form class="bg-info border border-2 border-success rounded-3" method="POST" action="{{route('hotels.store')}}">
-            @csrf
 
-            {{-- <div class="input-group mt-2">
-                <span class="input-group-text fw-bold bg-light">roomid</span>
-                <select class="form-select" name='roomid'>
-                    @foreach($rooms as $item)
-                        <option value="{{$item->roomid}}">{{$item->roomid}}</option>
-                    @endforeach
-                </select>
-            </div> --}}
-            {{-- text --}}
-            <div class="mt-3">
-                <div class="input-group">
-                    <span class="input-group-text fw-bold bg-light">Hotel Name</span>
-                    <input value="{{old('hotel_name')}}" required  name = 'hotel_name' type="text" class="form-control" placeholder="">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+                <h4 class="mb-0 font-size-18">Thêm phòng mới</h4>
+
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Thêm phòng mới</li>
+                    </ol>
                 </div>
-                @error('hotel_name')
-                    <div class="text-danger">{{$message}}</div>
-                @enderror
             </div>
-
-            <div class="mt-3">
-                <div class="input-group">
-                    <span class="input-group-text fw-bold bg-light">hotel_address</span>
-                    <input value="{{old('hotel_address')}}" required name = 'hotel_address' type="text" class="form-control" placeholder="">
-                </div>
-                @error('hotel_address')
-                    <div class="text-danger">{{$message}}</div>
-                @enderror
-            </div>
-
-            <div class="mt-3">
-                <div class="form-floating">
-                    <textarea name="hotel_description" class="form-control" placeholder="" id="floatingTextarea2" required style="height: 100px">{{old('hotel_description')}}</textarea>
-                    <label for="floatingTextarea2">hotel_description </label>
-                </div>
-                @error('hotel_description')
-                    <div class="text-danger">{{$message}}</div>
-                @enderror
-            </div>
-
-            {{-- <div class="mt-3">
-                <div class="input-group">
-                    <span class="input-group-text fw-bold bg-light">checkin</span>
-                    <input value="{{old('checkin')}}"  required name = 'checkin' type="datetime-local" class="form-control" placeholder="">
-                </div>
-
-                @error('checkin')
-                    <div class="text-danger">{{$message}}</div>
-                @enderror
-            </div> --}}
-
-            <div class="mt-3">
-                <div class="input-group">
-                    <span class="input-group-text fw-bold bg-light">hotel_price</span>
-                    <input value="{{old('hotel_price')}}" required name = 'hotel_price' type="number" class="form-control" placeholder="">
-                </div>
-                @error('hotel_price')
-                    <div class="text-danger">{{$message}}</div>
-                @enderror
-            </div>
-
-
-            <div class="d-flex justify-content-end my-3">
-                <button type="submit" class="btn btn-primary ">Add</button>
-                <a href="{{route('hotels.index')}}" class="btn btn-danger ms-2">Back</a>
-            </div>
-
-        </form>
+        </div>
     </div>
-   </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="needs-validation" novalidate method="POST" action="{{ route('hotels.store') }}">
+                            @csrf
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">Tên phòng</label>
+                                        <input value="{{ old('hotel_name') }}" required id="validationCustom01"
+                                            name = 'hotel_name' type="text" class="form-control"
+                                            placeholder="vd: Phòng 1">
+                                    </div>
+                                    @error('hotel_name')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="validationCustom02">Địa chỉ phòng</label>
+                                        <input value="{{ old('hotel_address') }}" required id="validationCustom02"
+                                            name = 'hotel_address' type="text" class="form-control"
+                                            placeholder="vd: 175 Tây Sơn">
+                                    </div>
+                                    @error('hotel_address')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Mô tả</label>
+                                        <textarea name="hotel_description" class="form-control" placeholder="vd: Sang trọng" id="exampleFormControlTextarea1"
+                                            required rows="3">{{ old('hotel_description') }}</textarea>
+                                    </div>
+                                    @error('hotel_description')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="validationCustom03">Giá thuê</label>
+                                        <input value="{{ old('hotel_price') }}" required id="validationCustom03"
+                                            name = 'hotel_price' type="number" class="form-control" placeholder="vd: 100"
+                                            min="1">
+                                    </div>
+                                    @error('hotel_price')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end my-3">
+                                <button type="submit"
+                                    class="btn btn-primary waves-effect waves-light mx-3 px-4">Thêm</button>
+                                <a href="{{ route('hotels.index') }}" class="btn btn-danger waves-effect waves-light">Quay
+                                    lại</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 @endsection

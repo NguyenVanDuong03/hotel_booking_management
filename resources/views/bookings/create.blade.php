@@ -1,58 +1,78 @@
 @extends('layouts.app')
+@section('title', 'Thêm đặt phòng')
 @section('content')
-<div class="container">
-    <div class="row p-3">
-        <h4 class="text-uppercase text-decoration-underline text-center fw-bold text-success">Add new booking</h4>
-        <form class="bg-info border border-2 border-success rounded-3" method="POST" action="{{route('bookings.store')}}">
-            @csrf
 
-            <div class="input-group mt-2">
-                <span class="input-group-text fw-bold bg-light">Hotel Name</span>
-                <select class="form-select" name='hotel_id'>
-                    @foreach($hotels as $item)
-                        <option value="{{$item->hotel_id}}">{{$item->hotel_name}}</option>
-                    @endforeach
-                </select>
-            </div>
-            {{-- text --}}
-            <div class="mt-3">
-                <div class="input-group">
-                    <span class="input-group-text fw-bold bg-light">Booking Guest</span>
-                    <input value="{{old('booking_guest')}}"  name = 'booking_guest' type="text" class="form-control" placeholder="">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+                <h4 class="mb-0 font-size-18">Thêm đặt phòng</h4>
+
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Thêm đặt phòng</li>
+                    </ol>
                 </div>
-                @error('booking_guest')
-                    <div class="text-danger">{{$message}}</div>
-                @enderror
             </div>
-
-            {{-- <div class="mt-3">
-                <div class="form-floating">
-                    <textarea name="note" class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px">{{old('note')}}</textarea>
-                    <label for="floatingTextarea2">note </label>
-                </div>
-                @error('note')
-                    <div class="text-danger">{{$message}}</div>
-                @enderror
-            </div> --}}
-
-            <div class="mt-3">
-                <div class="input-group">
-                    <span class="input-group-text fw-bold bg-light">booking_checkin</span>
-                    <input value="{{old('booking_checkin')}}"  required name = 'booking_checkin' type="datetime-local" class="form-control" placeholder="">
-                </div>
-
-                @error('booking_checkin')
-                    <div class="text-danger">{{$message}}</div>
-                @enderror
-            </div>
-
-
-            <div class="d-flex justify-content-end my-3">
-                <button type="submit" class="btn btn-primary ">Add</button>
-                <a href="{{route('bookings.index')}}" class="btn btn-danger ms-2">Back</a>
-            </div>
-
-        </form>
+        </div>
     </div>
-   </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="needs-validation" novalidate method="POST" action="{{ route('bookings.store') }}">
+                            @csrf
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label>Tên phòng</label>
+                                        <select class="form-control" data-toggle="select2" name='hotel_id'>
+                                            <optgroup label="Chọn phòng phù hợp">
+                                                @foreach($hotels as $item)
+                                                    <option value="{{$item->hotel_id}}">{{$item->hotel_name}}</option>
+                                                @endforeach
+                                            </optgroup>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="validationCustom02">Tên khách hàng</label>
+                                        <input value="{{ old('booking_guest') }}" required id="validationCustom02"
+                                            name = 'booking_guest' type="text" class="form-control"
+                                            placeholder="vd: Nguyễn Văn A">
+                                    </div>
+                                    @error('booking_guest')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="validationCustom03">Thời gian đặt phòng</label>
+                                        <input value="{{ old('booking_checkin') }}" required id="validationCustom03"
+                                            name = 'booking_checkin' type="datetime-local" class="form-control" placeholder="vd: 100">
+                                    </div>
+                                    @error('booking_checkin')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end my-3">
+                                <button type="submit"
+                                    class="btn btn-primary waves-effect waves-light mx-3 px-4">Thêm</button>
+                                <a href="{{ route('bookings.index') }}" class="btn btn-danger waves-effect waves-light">Quay
+                                    lại</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 @endsection

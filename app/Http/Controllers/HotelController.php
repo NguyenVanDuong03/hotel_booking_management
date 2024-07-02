@@ -15,7 +15,7 @@ class HotelController extends Controller
     public function index(request $request)
     {
         $numberOfRecord = Hotel::count();
-        $perPage = 10;
+        $perPage = 9;
         $numberOfPage = $numberOfRecord % $perPage == 0?
              (int) $numberOfRecord / $perPage: (int) $numberOfRecord / $perPage + 1;
         $pageIndex = 1;
@@ -60,7 +60,7 @@ class HotelController extends Controller
         }
         // success
         hotel::create($request->all());
-        return redirect()->route('hotels.index')->with('mes', 'Add success!');
+        return redirect()->route('hotels.index')->with('mes', 'Thêm phòng thành công!');
     }
 
     /**
@@ -97,16 +97,6 @@ class HotelController extends Controller
             'hotel_price' => ['required','max:20'],
         ]);
 
-        // $checkin = $request->input('checkin');
-        // $checkout = $request->input('checkout');
-        // $checkins = new DateTime($checkin);
-        // $checkouts = new DateTime($checkout);
-        // $intevel = $checkouts->diff($checkins);
-        // $hours = ($intevel->d)* 24 + $intevel->h;
-        // $totalMoney = $hours * $hotel->getPrice();
-        // $hotel->numberOfHour = $hours;
-        // $hotel->totalMoney = $totalMoney;
-
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
@@ -115,7 +105,7 @@ class HotelController extends Controller
         // success
         $pageIndex = $request->input('pageIndex');
         $hotel->update($request->all());
-        return redirect()->route('hotels.index', ['pageIndex' => $pageIndex])->with('mes', 'Update success!');
+        return redirect()->route('hotels.index', ['pageIndex' => $pageIndex])->with('mes', 'Cập nhật phòng thành công!');
     }
 
     /**
@@ -126,6 +116,6 @@ class HotelController extends Controller
         $pageIndex = 1;
         if($request->has('pageIndex')) $pageIndex = $request->input('pageIndex');
         $hotel->delete();
-        return redirect()->route('hotels.index', ['pageIndex' => $pageIndex])->with('mes' , 'Delete success!');
+        return redirect()->route('hotels.index', ['pageIndex' => $pageIndex])->with('mes' , 'Xóa phòng thành công!');
     }
 }
