@@ -97,7 +97,7 @@
     <!-- paginating  -->
     <div class="d-flex justify-content-center align-items-center my-2">
         <a class="btn btn-success mx-1" href="{{ route('hotels.index', ['pageIndex' => $pageIndex - 1]) }}">
-            << /a>
+            <</a>
                 @for ($i = 1; $i <= $numberOfPage; $i++)
                     @if ($pageIndex == $i)
                         <a class="btn btn-primary mx-1"

@@ -100,8 +100,7 @@
     <!-- paginating  -->
 
     <div class="d-flex justify-content-center align-items-center my-2">
-        <a class="btn btn-success mx-1" href="{{ route('bookings.index', ['pageIndex' => $pageIndex - 1]) }}">
-            << /a>
+        <a class="btn btn-success mx-1" href="{{ route('bookings.index', ['pageIndex' => $pageIndex - 1]) }}"><</a>
                 @for ($i = 1; $i <= $numberOfPage; $i++)
                     @if ($pageIndex == $i)
                         <a class="btn btn-primary mx-1"
@@ -111,7 +110,7 @@
                             href="{{ route('bookings.index', ['pageIndex' => $i]) }}">{{ $i }}</a>
                     @endif
                 @endfor
-                <a class="btn btn-success mx-1" href="{{ route('bookings.index', ['pageIndex' => $pageIndex + 1]) }}">></a>
+        <a class="btn btn-success mx-1" href="{{ route('bookings.index', ['pageIndex' => $pageIndex + 1]) }}">></a>
     </div>
 
 
