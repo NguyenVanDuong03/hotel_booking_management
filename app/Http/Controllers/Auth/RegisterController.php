@@ -49,11 +49,20 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'regex:/^[\p{L}\s]+$/u'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ], [
+            'name.max' => 'Tên không quá 255 ký tự.',
+            'name.regex' => 'Tên chỉ được chứa chữ cái và khoảng trắng.',
+            'email.unique' => 'Email đã được sử dụng.',
+            'email.max' => 'Email không quá 255 ký tự.',
+            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
+            'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
         ]);
     }
+
+
 
     /**
      * Create a new user instance after a valid registration.
