@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Thêm khách sạn')
+@section('title', 'Thêm phòng khách sạn')
 @section('content')
 
     <div class="row">
